@@ -6,13 +6,13 @@ class Solution {
     }
     private int leftidx(int[] nums,int target){
         int idx=-1;int low=0;int high=nums.length-1;
-        while(low<=target){
+        while(low<=high){
             int mid=low+(high-low)/2;
             if(nums[mid]==target){
-                idx=low;
-                high=mid-1;
+                idx=mid;
+                
             }
-            if(nums[mid]>target){
+            if(nums[mid]>=target){
                 high=mid-1;
             }
             else{
@@ -23,17 +23,17 @@ class Solution {
     }
     private int rightidx(int[] nums,int target){
         int idx=-1;int low=0;int high=nums.length-1;
-        while(low>=target){
+        while(low<=high){
             int mid=low+(high-low)/2;
             if(nums[mid]==target){
-                idx=low;
-                low=mid+1;
+                idx=mid;
+                
             }
-            if(nums[mid]>target){
-                high=mid-1;
+            if(nums[mid]<=target){
+                low=mid+1;
             }
             else{
-                low=mid+1;
+                high=mid-1;
             }
         }
         return idx;
